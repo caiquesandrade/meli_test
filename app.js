@@ -7,8 +7,9 @@ const port = process.env.PORT || 8080;
 require("./Models/Dna");
 const Dna = mongoose.model('dna');
 
+
 // Database connection
-mongoose.connect('mongodb://localhost/dna', {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/dna', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false,
@@ -191,4 +192,4 @@ function isSimian(request) {
 
 app.listen(port, () => {
     console.log('Servidor iniciado na porta ' + port);
-})
+}
