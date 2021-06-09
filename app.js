@@ -22,22 +22,18 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/dna', {
 
 app.use(express.json());
 
-app.post("/simian", (req, res) => {
-    
-    let result = isSimian(req.body);
-    console.log(result.form_life)
-    
-    if(result.form_life === 's') {
+app.post("/simian", async (req, res) => {
 
-       Dna.findOne ({
-            dna: result.dna
-        }, function(erro, obj) {
-            if (obj != null) {
-                return res.status(409).json({
-                    'msg': "DNA exists"
-                });
-            }
+    let result = isSimian(req.body);
+    let dnaExists = await Dna.findOne({dna: result.dna});
+
+    if (dnaExists != null) {
+
+        return res.status(400).json({
+            'msg': 'DNA já existe'
         });
+
+    } else if(result.form_life === 's') {
 
         const dna = Dna.create(result, (err) => {
             if(err) {
@@ -48,16 +44,6 @@ app.post("/simian", (req, res) => {
             });
         });
     } else if(result.form_life === 'h') { 
-
-        Dna.findOne ({
-            dna: result.dna
-        }, function(erro, obj) {
-            if (obj != null) {
-                return res.status(409).json({
-                    'msg': "DNA exists"
-                });
-            }
-        });
 
         const dna = Dna.create(result, (err) => {
             if(err) {
