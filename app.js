@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
+const port = process.env.PORT || 8080;
 
 // Exporting Model
 require("./Models/Dna");
@@ -188,6 +189,6 @@ function isSimian(request) {
     }
 };
 
-app.listen(8080, () => {
-    console.log('servidor iniciado na porta 8080 no endereço: http://localhost:8080');
+app.listen(port, () => {
+    console.log('Servidor iniciado na porta ' + port);
 })
