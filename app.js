@@ -192,4 +192,4 @@ function isSimian(request) {
 
 app.listen(port, () => {
     console.log('Servidor iniciado na porta ' + port);
-}
+})
