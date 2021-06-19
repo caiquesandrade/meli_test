@@ -82,9 +82,15 @@ app.get("/stats", (req,res) => {
 function isSimian(request) {
     let linha = request.dna[0].length;
     let coluna = request.dna.length;
+    const elementsDna = [
+        'A',
+        'T',
+        'C',
+        'G'
+    ];
     
     if (linha != 6 || coluna != 6) {
-        return 'Error: Invalid format';
+        return 'Error: Invalid format!';
 
     } else {
         let simian = false;
@@ -96,12 +102,17 @@ function isSimian(request) {
         for(i = 0; i < tam; i++) {
             matriz[i] = request.dna[i].split("")
         }
-
+        
         // Verify line
         for (lin = 0; lin < tam; lin++){
             horizontal = 0;
             for (col = 0; col < tam; col++){
                 base = matriz[lin][col];
+                
+                if(!(elementsDna.includes(base))) {
+                    return 'Error: Invalid DNA! the inserted DNA are not a compatible nitrogenous bases'
+                }
+
                 if (base == matriz[lin][col+1]) {
                     horizontal++
                 }
