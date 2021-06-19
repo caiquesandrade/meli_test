@@ -47,7 +47,7 @@ GET - https://teste-melli.herokuapp.com/stats
 
 >Retorna a quantidade de Simio, humano e a proporção de Simios para humanos.
 
-![STATS](https://user-images.githubusercontent.com/48366009/121290739-80c99200-c8bd-11eb-8af6-be4810fcb4d8.png)
+![STATS](https://user-images.githubusercontent.com/48366009/122628741-449ceb00-d08e-11eb-9081-ea9f55828f33.png)
 
 POST - https://teste-melli.herokuapp.com/simian
 
@@ -76,4 +76,8 @@ OBS: Se o DNA já existir, retornara:
 OBS 2: Se a matriz/array for invalido, retornará:
 
 ![INVALID FORMAT](https://user-images.githubusercontent.com/48366009/121291104-182ee500-c8be-11eb-8c5c-0fc136d3c83e.png)
+
+OBS 3: Caso tente inserir uma base nitrogenada diferente, irá receber um erro:
+
+![INVALID DNA](https://user-images.githubusercontent.com/48366009/122628764-80d04b80-d08e-11eb-86f6-9452f6819af9.png)
 
